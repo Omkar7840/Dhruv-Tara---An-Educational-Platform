@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Register Form</title>
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script type="module" src="js/firebaseauth.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="min-h-screen">
+      <div class="container">
+        <!-- Forms Container -->
+        <div class="forms-container">
+          <!-- Login Form -->
+          <div class="login-form active">
+            <div class="form-content">
+              <h2>Login</h2>
+              <form id="loginForm">
+                <div class="input-group">
+                  <input
+                    type="email"
+                    placeholder="Email Address"
+                    id="loginEmail"
+                  />
+                </div>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    id="loginPassword"
+                  />
+                </div>
+                <div class="form-options">
+                  <label class="remember-me">
+                    <input type="checkbox" /> Remember me
+                  </label>
+                  <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <div class="error-message" id="loginErrorMessage"></div>
+                <div class="button-container" id="loginButtonContainer">
+                  <button type="button" id="loginButton" class="action-button">
+                    Login
+                  </button>
+                </div>
+              </form>
+              <div class="divider">
+                <span>or continue with</span>
+              </div>
+              <div class="social-login">
+                <div class="social-buttons">
+                  <button class="social-button google">
+                    <i class="fab fa-google"></i>
+                  </button>
+                  <button class="social-button facebook">
+                    <i class="fab fa-facebook-f"></i>
+                  </button>
+                  <button class="social-button twitter">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+                  <button class="social-button github">
+                    <i class="fab fa-github"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Register Form -->
+          <div class="register-form">
+            <div class="form-content">
+              <h2>Register</h2>
+              <form id="registerForm">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    id="registerUsername"
+                  />
+                </div>
+                <div class="input-group">
+                  <input type="email" placeholder="Email" id="registerEmail" />
+                </div>
+                <div class="input-group">
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    id="registerPassword"
+                  />
+                </div>
+                <div class="error-message" id="registerErrorMessage"></div>
+                <div class="button-container" id="registerButtonContainer">
+                  <button
+                    type="button"
+                    id="registerButton"
+                    class="action-button"
+                  >
+                    Register
+                  </button>
+                </div>
+              </form>
+              <div class="divider">
+                <span>or sign up with</span>
+              </div>
+              <div class="social-login">
+                <div class="social-buttons">
+                  <button class="social-button google">
+                    <i class="fab fa-google"></i>
+                  </button>
+                  <button class="social-button facebook">
+                    <i class="fab fa-faceplaystation-f"></i>
+                  </button>
+                  <button class="social-button twitter">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+                  <button class="social-button github">
+                    <i class="fab fa-github"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Section -->
+        <div class="image-section">
+          <div class="overlay"></div>
+          <div class="content">
+            <h2 id="welcomeText">Welcome Back</h2>
+            <p id="welcomeDescription">
+              Enter your credentials to access your account.
+            </p>
+            <button id="toggleButton" class="toggle-button">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Initialize Lucide icons
+      document.addEventListener("DOMContentLoaded", () => {
+        lucide.replace();
+      });
+    </script>
+  </body>
+</html>

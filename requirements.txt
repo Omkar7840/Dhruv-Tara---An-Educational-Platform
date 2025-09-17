@@ -1,0 +1,23 @@
+# blinker
+# click
+# Flask
+# Flask-Cors
+# google-generativeai
+# googletrans
+# requests
+# python-dotenv
+# youtube-transcript-api
+# Werkzeug
+blinker==1.6.3
+click==8.1.7
+Flask==2.3.3
+Flask-Cors==4.0.0
+googletrans==4.0.0-rc1
+requests==2.31.0
+python-dotenv==1.0.0
+youtube-transcript-api==0.6.1
+Werkzeug==2.3.7
+yt-dlp==2023.11.16
+groq==0.3.0
+protobuf==3.20.3
+urllib3==1.26.17

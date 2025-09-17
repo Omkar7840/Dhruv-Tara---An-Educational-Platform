@@ -1,0 +1,781 @@
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3f37c9;
+  --accent-color: #4895ef;
+  --dark-color: #1a1a2e;
+  --light-color: #f8f9fa;
+  --success-color: #4cc9f0;
+  --warning-color: #f72585;
+  --text-light: #e2e2e2;
+  --text-dark: #333;
+  --card-bg: #16213e;
+  --sidebar-bg: #0f3460;
+  --chat-bg: #1a1a2e;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-image: url(assets/mainbg/bg.jpg);
+  background-size: cover;
+  background-position: center;
+  color: var(--text-light);
+  height: 100vh;
+  overflow: hidden;
+}
+
+header {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 1rem 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  position: relative;
+  right: 30px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #3367d6;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.btn {
+  background:rgba(62, 74, 117, 0.15);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+} 
+
+/* Main Container */
+.outer-container {
+  padding: 80px 40px 40px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1800px;
+  height: calc(100vh - 120px);
+  gap: 20px;
+}
+
+/* Video Section */
+.video-section {
+  width: 70%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.video-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 30%;
+  height: 100%;
+  background-color:rgba(62, 74, 117, 0.35);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-header {
+  display: flex;
+  background-color: var(--card-bg);
+  padding: 10px;
+}
+
+.sidebar-tab {
+  flex: 1;
+  padding: 12px 0;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+}
+
+.sidebar-tab i {
+  font-size: 1.2rem;
+}
+
+.sidebar-tab.active {
+  background-color:rgba(62, 74, 117, 0.35);
+  color: white;
+}
+
+.sidebar-tab:hover:not(.active) {
+  background-color: rgba(62, 74, 117, 0.35);
+}
+
+.sidebar-content {
+  display: none;
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+.sidebar-content.active {
+  display: block;
+}
+
+/* Lecture List Styles */
+.search-box {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px 15px 10px 35px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 14px;
+}
+
+.search-box i {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+}
+
+.lecture-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lecture-card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lecture-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.lecture-thumbnail {
+  position: relative;
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.lecture-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.duration {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.lecture-info {
+  padding: 10px;
+  flex: 1;
+}
+
+.lecture-info h4 {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.lecture-info p {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 8px;
+  opacity: 0.8;
+}
+
+.lecture-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 12px;
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+.lecture-meta span {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* Chatbot Styles */
+.chatbot-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: var(--chat-bg);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.chatbot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: var(--card-bg);
+}
+
+.chatbot-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chatbot-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+}
+
+.chatbot-title {
+  font-weight: 600;
+  color: white;
+}
+
+.chatbot-status {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.chatbot-status i {
+  font-size: 8px;
+}
+
+.chatbot-status.online i {
+  color: var(--success-color);
+}
+
+.chatbot-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-icon {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 16px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.btn-icon:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.messages-container {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: var(--chat-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-message {
+  margin-bottom: 15px;
+}
+
+.bot-message {
+  max-width: 80%;
+  padding: 12px 15px;
+  border-radius: 18px;
+  margin-bottom: 15px;
+  align-self: flex-start;
+  background-color: var(--card-bg);
+  color: white;
+  position: relative;
+}
+
+.bot-message.welcome {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.user-message {
+  max-width: 80%;
+  padding: 12px 15px;
+  border-radius: 18px;
+  margin-bottom: 15px;
+  align-self: flex-end;
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.message-time {
+  font-size: 10px;
+  color: var(--text-light);
+  opacity: 0.7;
+  margin-top: 5px;
+  display: block;
+}
+
+.quick-questions {
+  margin-top: 10px;
+}
+
+.quick-questions p {
+  font-size: 13px;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.quick-question {
+  display: block;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quick-question:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: var(--card-bg);
+  gap: 10px;
+}
+
+.message-input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 14px;
+}
+
+.message-input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.send-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.send-button:hover {
+  transform: scale(1.05);
+}
+
+/* Resources Section */
+.resources-container h3 {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+}
+
+.resource-card {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.resource-card:hover {
+  transform: translateX(5px);
+}
+
+.resource-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.resource-info {
+  flex: 1;
+}
+
+.resource-info h4 {
+  font-size: 15px;
+  color: white;
+  margin-bottom: 3px;
+}
+
+.resource-info p {
+  font-size: 12px;
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+.download-btn {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background-color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .video-section, .sidebar {
+    width: 100%;
+  }
+  
+  .sidebar {
+    margin-top: 20px;
+    height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .outer-container {
+    padding: 80px 20px 20px;
+  }
+  
+  .lecture-card {
+    flex-direction: column;
+  }
+  
+  .lecture-thumbnail {
+    width: 100%;
+    height: 120px;
+  }
+}
+
+/* Add this to your existing CSS */
+.summarizer-container h3 {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+}
+
+.summarize-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.summarize-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.summarize-btn i {
+  font-size: 1.2rem;
+}
+
+.summary-content {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 15px;
+  display: none;
+}
+
+.summary-content.active {
+  display: block;
+}
+
+.summary-content h4 {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.summary-content p {
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.loading-spinner {
+  display: none;
+  text-align: center;
+  padding: 15px;
+}
+
+.loading-spinner.active {
+  display: block;
+}
+
+.loading-spinner i {
+  font-size: 1.5rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/* Enhanced message and summary styling */
+.bot-message p,
+#summaryText p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.bot-message h4,
+#summaryText h4 {
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.bot-message ul,
+.bot-message ol,
+#summaryText ul,
+#summaryText ol {
+  margin: 10px 0 15px 0;
+  padding-left: 25px;
+  color: var(--text-light);
+}
+
+.bot-message li,
+#summaryText li {
+  margin-bottom: 8px;
+  padding-left: 5px;
+  position: relative;
+  list-style-type: disc;
+}
+
+.bot-message strong,
+#summaryText strong {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+/* Improved bullet points */
+.bot-message ul li::marker,
+#summaryText ul li::marker {
+  color: var(--accent-color);
+}
+
+/* Improved numbered lists */
+.bot-message ol li,
+#summaryText ol li {
+  list-style-type: decimal;
+}
+
+.bot-message ol li::marker,
+#summaryText ol li::marker {
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+/* Message content container for better spacing */
+.message-content {
+  width: 100%;
+}
+
+/* Enhance readability of summary */
+.summary-content {
+  line-height: 1.6;
+}
+
+.summary-content h4 {
+  color: var(--accent-color);
+  margin-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+}
+
+/* Fixes for mobile view */
+@media (max-width: 768px) {
+  .bot-message ul,
+  .bot-message ol,
+  #summaryText ul,
+  #summaryText ol {
+    padding-left: 20px;
+  }
+}
+/* Status Indicator Styles */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background-color: var(--card-bg);
+  font-size: 13px;
+}
+
+.status-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--success-color);
+  box-shadow: 0 0 10px var(--success-color);
+  animation: pulse 2s infinite;
+}
+
+.status-light.offline {
+  background-color: var(--warning-color);
+  box-shadow: 0 0 10px var(--warning-color);
+}
+
+.status-light.connecting {
+  background-color: #f39c12;
+  box-shadow: 0 0 10px #f39c12;
+  animation: pulse-fast 1s infinite;
+}
+
+.status-text {
+  color: var(--text-light);
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes pulse-fast {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}

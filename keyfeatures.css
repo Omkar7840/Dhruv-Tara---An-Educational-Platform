@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: rgb(249, 250, 251);
+}
+h3{
+    color: white;
+}
+.container {
+    padding: 3rem;
+    background-image: url(assets/mainbg/bg.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+.content {
+    max-width: 1152px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+/* Left Column Styles */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    top: 50px;
+}
+
+.left-column h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: rgb(17, 24, 39);
+}
+
+.left-column p {
+    color: rgb(75, 85, 99);
+    max-width: 28rem;
+    line-height: 1.5;
+}
+/* Right Column Styles */
+.right-column {
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    gap: 1rem;
+    position: relative;
+    top: 50px;
+}
+
+/* Service Card Styles */
+.service-card {
+    background-color:rgba(62, 74, 117, 0.35);
+    padding: 1.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.card-number {
+    font-size: 0.875rem;
+    opacity: 0.6;
+}
+
+.service-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.service-card p {
+    font-size: 0.875rem;
+    color: rgb(75, 85, 99);
+    line-height: 1.5;
+}

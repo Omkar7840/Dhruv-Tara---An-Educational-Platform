@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>More courses</title>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="morecourses.css">
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+    
+    const firebaseConfig = {
+      apiKey: "AIzaSyAX63jwwPG82T7cnstu8oZ7bS5WkEHAbmk",
+      authDomain: "project1-c3ef3.firebaseapp.com",
+      projectId: "project1-c3ef3",
+      storageBucket: "project1-c3ef3.appspot.com",
+      messagingSenderId: "1036031836888",
+      appId: "1:1036031836888:web:ca7ff6ea695c80933a4dad",
+      measurementId: "G-JY8RTW6HQ9"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth();
+
+    window.handleProtectedPlay = async function(event, courseName) {
+      event.preventDefault();
+      const isAuthenticated = await new Promise((resolve) => {
+        onAuthStateChanged(auth, (user) => {
+          resolve(!!user);
+        });
+      });
+      
+      if (isAuthenticated) {
+        window.location.href = `exp.html?course=${courseName}`;
+      } else {
+        localStorage.setItem('redirectAfterLogin', `exp.html?course=${courseName}`);
+        window.location.href = "login.html";
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <div style="background-image: url(assets/mainbg/bg.jpg);background-size: cover;">
+    <div class="min-h-screen bg-dark overflow-x-hidden">
+      <header class="header">
+        <h1 class="logo" style="color: white;">Courses</h1>
+      </header>
+      <main class="main">
+        <section>
+          <div class="movie-grid" id="movieGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="modalContainer"></div>
+
+    <script>
+      const movies = [
+        {
+          id: 1,
+          title: "HTML",
+          name: "html",
+          imageUrl: "assets/thumbnail/htmlthumbnail.jpg",
+          duration: "",
+          description: "Build the backbone of every website. Learn how to structure content, create forms, and design beautiful layouts using HTML.",
+          topics: ["HTML Tags & Elements, Tables and Lists, HTML5 New Feature"],
+        },
+        {
+          id: 2,
+          title: "Python",
+          name: "python",
+          imageUrl: "assets/thumbnail/pythonthumbnail.jpg",
+          duration: "",
+          description: "Unlock the power of simplicity. Python is perfect for beginners and pros alike—great for web, data science, AI, and automation.",
+          topics: ["Variables and Data Types, Functions and Modules, File Handling"],
+        },
+        {
+          id: 3,
+          title: "Java",
+          name: "java",
+          imageUrl: "assets/thumbnail/javathumbnail.jpg",
+          duration: "",
+          description: "Master one of the most powerful and widely-used programming languages. From Android apps to enterprise software—Java does it all.",
+          topics: ["Java Basics & Syntax, Classes and Objects, Collections Framework"],
+        },
+        {
+          id: 4,
+          title: "DSA",
+          name: "dsa",
+          imageUrl: "assets/thumbnail/dsathumbnail.jpg",
+          duration: "",
+          description: "Sharpen your problem-solving skills. Learn DSA to crack coding interviews and write optimized, efficient code.",
+          topics: ["Stacks and Queues, Trees and Binary Trees, Time & Space Complexity"],
+        },
+        {
+          id: 5,
+          title: "JavaScript",
+          name: "javascript",
+          imageUrl: "assets/thumbnail/jsthumbnail.jpg",
+          duration: "",
+          description: "Make your web pages come alive! JavaScript lets you build interactive, dynamic, and responsive websites with ease.",
+          topics: ["DOM Manipulation, Asynchronous JS (Promises, async/await), Local Storage & Session Storage"],
+        },
+        {
+          id: 6,
+          title: "C++",
+          name: "cpp",
+          imageUrl: "assets/thumbnail/C++thumbnail.jpg",
+          duration: "",
+          description: "Boost your coding fundamentals with C++. Dive deep into memory management, OOP, and performance-critical applications.",
+          topics: ["Data Types and Variables, Inheritance & Polymorphism,Exception Handling"],
+        },
+        {
+          id: 7,
+          title: "Machine Learning",
+          name: "ml",
+          imageUrl: "assets/thumbnail/mlthumbnail.jpg",
+          duration: "",
+          description: "Turn data into decisions. Learn how machines learn from data to make predictions, recognize patterns, and power intelligent apps.",
+          topics: ["Supervised vs Unsupervised Learning, Decision Trees & Random Forest, Introduction to Neural Networks"],
+        },
+        {
+          id: 8,
+          title: "Block Chain",
+          name: "blockchain",
+          imageUrl: "assets/thumbnail/blockchainthumbnail.jpg",
+          duration: "",
+          description: "Step into the future of technology. Understand how decentralized systems, smart contracts, and cryptocurrencies work.",
+          topics: ["Cryptography & Hashing, Ethereum Basics, Decentralized Applications (DApps)"],
+        },
+        {
+          id: 9,
+          title: "AWS",
+          name: "aws",
+          imageUrl: "assets/thumbnail/awsthumbnail.jpg",
+          duration: "",
+          description: "Master the cloud with AWS. Learn how to deploy, scale, and manage applications on the world's most popular cloud platform.",
+          topics: ["AWS Core Services (EC2, S3, RDS), AWS CLI and SDKs, Serverless with Lambda"],
+        },
+        {
+          id: 10,
+          title: "Mongo DB",
+          name: "mongodb",
+          imageUrl: "assets/thumbnail/mongothumbnail.jpg",
+          duration: "",
+          description: "Go NoSQL with MongoDB. Learn how to handle unstructured data with this powerful, flexible, and scalable database.",
+          topics: ["CRUD Operations, MongoDB Atlas & Cloud, Data Validation & Schema Design"],
+        },
+        {
+          id: 11,
+          title: "Market Analytics",
+          name: "market-analysis",
+          imageUrl: "assets/thumbnail/marketanalytics.jpg",
+          duration: "",
+          description: "Make smarter business moves. Learn how to analyze market trends, customer behavior, and performance metrics using data.",
+          topics: ["Data Validation & Schema Design, Trend & Competitor Analysis, Real-world Case Studies"],
+        },
+        {
+          id: 12,
+          title: "Coming soon",
+          name: "coming-soon",
+          imageUrl: "assets/thumbnail/comingsoonthumbnail.jpg",
+          duration: "",
+          description: "Coming soon...........",
+          topics: ["..................................."],
+        }
+      ];
+
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      function createMovieCard(movie) {
+        const card = document.createElement('div');
+        card.className = 'movie-card';
+        card.innerHTML = `
+      <img src="${movie.imageUrl}" alt="${movie.title}" class="movie-image">
+      <div class="movie-overlay">
+        <div class="movie-content">
+          <div class="movie-buttons">
+            <button class="btn btn-outline more-info-btn" data-movie-id="${movie.id}">
+              <i data-lucide="chevron-down"></i>
+            </button>
+          </div>
+          <div class="movie-info">
+            <div class="mb-2">
+            </div>
+            <div>${movie.title}</div>
+          </div>
+        </div>
+      </div>
+    `;
+
+        // Add hover effect
+        card.addEventListener('mouseenter', () => {
+          card.classList.add('hovered');
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.classList.remove('hovered');
+        });
+
+        // Add click handler for more info button
+        const moreInfoBtn = card.querySelector('.more-info-btn');
+        moreInfoBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const movieId = parseInt(moreInfoBtn.dataset.movieId);
+          const movie = movies.find(m => m.id === movieId);
+          showMovieModal(movie);
+        });
+
+        return card;
+      }
+
+      function showMovieModal(movie) {
+        const modalContainer = document.getElementById('modalContainer');
+        modalContainer.innerHTML = `
+      <div class="modal-container">
+        <div class="modal">
+          <button class="modal-close">
+            <i data-lucide="x"></i>
+          </button>
+          
+          <div class="modal-hero">
+            <img src="${movie.imageUrl}" alt="${movie.title}" class="modal-image">
+            <div class="modal-overlay"></div>
+            
+            <div class="modal-title-section">
+              <h2 class="modal-title">${movie.title}</h2>
+              <div class="modal-actions">
+                <button class="btn-play" onclick="handleProtectedPlay(event, '${movie.name}')">
+                  Play
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="modal-content">
+            <div class="modal-metadata">
+              <span>${movie.duration}</span>
+            </div>
+            
+            <p class="modal-description">${movie.description}</p>
+            
+            <div class="modal-details">
+              <p class="mb-2">
+                <span class="modal-label">Topics: </span>
+                ${movie.topics.join(', ')}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+        // Initialize new icons
+        lucide.createIcons();
+
+        // Add close handler
+        const closeBtn = modalContainer.querySelector('.modal-close');
+        closeBtn.addEventListener('click', () => {
+          modalContainer.innerHTML = '';
+        });
+      }
+
+      // Initialize movie grid
+      const movieGrid = document.getElementById('movieGrid');
+      movies.forEach(movie => {
+        movieGrid.appendChild(createMovieCard(movie));
+      });
+
+      // Initialize icons for the initial render
+      lucide.createIcons();
+    </script>
+  </div>
+</body>
+</html>

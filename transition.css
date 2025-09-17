@@ -1,0 +1,59 @@
+/* Page Transition Styles */
+.page-container {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ffffff; /* Prevents white flash */
+}
+
+.page-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateX(0);
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.page-wrapper.slide-out-left {
+  transform: translateX(-100%);
+}
+
+.page-wrapper.slide-out-right {
+  transform: translateX(100%);
+}
+
+.page-wrapper.slide-in-left {
+  transform: translateX(0);
+}
+
+.page-wrapper.slide-in-right {
+  transform: translateX(0);
+}
+
+/* Ensure full viewport height and hide overflow */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000; /* Prevents white flash */
+}
+
+/* Prevent scrolling during transition */
+body.transitioning {
+  pointer-events: none;
+}
+
+/* Preload container */
+.preload-container {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}

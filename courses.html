@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses</title>
+    <link rel="stylesheet" href="courses.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+
+  <body>
+    <!-- More Courses Button -->
+    <div class="custom-button-container1">
+      <a href="morecourses.html" class="custom-btn1">
+        <i data-lucide="book-open"></i>
+        More Courses
+      </a>
+    </div>
+
+    <div class="min-h-screen bg-gray-900 relative overflow-hidden">
+      <!-- Background Image -->
+      <div class="background-image"></div>
+
+      <!-- Content -->
+      <div class="content">
+        <div class="max-w-7xl">
+          <!-- Header and Main Content -->
+          <div class="main-content">
+            <div class="default-content">
+              <h1 class="text-white">COURSES</h1>
+              <p class="text-gray-300">
+                “The more that you read, the more things you will know. The more
+                that you learn, the more places you’ll go.”
+              </p>
+            </div>
+
+            <div class="location-content hidden">
+              <div class="space-y-8">
+                <div>
+                  <h2 class="location"></h2>
+                  <h1 class="title"></h1>
+                </div>
+
+                <p class="description"></p>
+
+                <!-- Details Grid -->
+                <div class="details-grid">
+                  <div class="detail-card">
+                    <h3>
+                      <p class="best-time"></p>
+                    </h3>
+                  </div>
+                  <div class="detail-card">
+                    <button class="custom-btn">
+                      <a
+                        href="exp.html"
+                        class="dt-button"
+                        style="color: #3367d6"
+                      >
+                        <p class="elevation"></p>
+                      </a>
+                    </button>
+                  </div>
+                  <div class="detail-card">
+                    <h3>
+                      <p class="climate"></p>
+                    </h3>
+                  </div>
+                  <div class="detail-card">
+                    <div class="detail-header">
+                      <span></span>
+                    </div>
+                    <p class="temperature"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cards Container -->
+          <div class="cards-container">
+            <div class="cards-wrapper">
+              <div class="cards"></div>
+
+              <button class="nav-button right" onclick="scrollRight()">
+                <i data-lucide="chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/transition.js"></script>
+    <script src="js/courses.js"></script>
+  </body>
+</html>

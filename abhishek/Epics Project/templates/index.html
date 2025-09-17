@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon and Meta -->
+    <link rel="icon" href="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" type="image/svg+xml">
+    <meta name="description"
+        content="An AI-powered system to recommend the most relevant Udemy courses based on your interest.">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Course Recommendation | Home</title>
+</head>
+
+<body style="
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+">          
+    <header style="background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;">
+        <nav style="display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 2rem;">
+            <div class="logo" style="font-size: 1.5rem;
+  font-weight: bold;">Dhruv <span style="color: #3367d6;">Tara</span></div>
+        </nav>
+    </header>
+
+    <main role="main">
+
+        <!-- Hero Section -->
+        <section class="jumbotron text-center" style="background-color:transparent; position: relative;top: 70px;" >
+            <div class="container">
+                <h3 class="jumbotron-heading" style="color: white;">Course Recommendation System</h3>
+                <p style="color: white;">Select a course to get AI-powered recommendations instantly.</p>
+
+                <!-- Dropdown for course selection -->
+                <form action="/" method="POST" class="form-inline justify-content-center mt-4">
+                    <label for="course" class="mr-2"style="color: white;">Choose a course:</label>
+                    <select name="course" id="course" class="form-control mr-2" required>
+                        <option value="" disabled selected>Select a course</option>
+                        {% for course in available_courses %}
+                        <option value="{{ course }}">{{ course }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-primary">Recommend</button>
+                </form>
+
+                {% if showtitle %}
+                <h5 class="mt-4" style="color: white;">Recommendations for: <span class="text-danger">"{{ coursename }}"</span></h5>
+                {% endif %}
+            </div>
+        </section>
+
+        <!-- Recommendation Results Section -->
+        <div class="album py-5" style="background-color:transparent;">
+            <div class="container">
+
+                {% if showerror %}
+                <div class="card text-center mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">Course Not Found</h5>
+                        <p class="card-text">
+                            Sorry! We couldn't find recommendations for <strong>{{ coursename }}</strong> at the moment.
+                            The course admin has been notified. Please try again later.
+                        </p>
+                        <a href="/" class="btn btn-outline-primary">Go Back</a>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="row">
+                    {% for course in coursemap %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm h-100">
+                            <div class="card-body bg-dark rounded">
+                                <p class="card-text text-white font-weight-bold">{{ course }}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    {% if loop.index == 1 %}
+                                    <!-- Only the first card gets an active link -->
+                                    <a href="http://127.0.0.1:5501/morecourses.html " target="_self" class="btn btn-outline-light btn-sm">
+                                        View Course
+                                    </a>
+                                    {% else %}
+                                    <!-- Other cards have a disabled/no-link button -->
+                                    <a href="javascript:void(0);" class="btn btn-outline-light btn-sm">
+                                        View Course
+                                    </a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

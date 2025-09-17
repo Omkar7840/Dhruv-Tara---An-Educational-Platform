@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Team</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="ourteam.css" />
+    <link rel="stylesheet" href="transition.css" />
+  </head>
+
+  <body>
+    <div
+      style="
+        background-image: url(assets/mainbg/bg.jpg);
+        background-size: cover;
+        background-position: center;
+      "
+    >
+      <div class="heading">
+        <h1>Our Team</h1>
+      </div>
+      <div class="cage-container">
+        <div class="gallery-container" id="gallery"></div>
+
+        <script src="js/transition.js"></script>
+        <script>
+          const names = [
+            {
+              id: 1,
+              color: "bg-gray-200",
+              bgColor: "bg-gray-100",
+              name: "Mohit Aggarwal",
+              image: "assets/team/mohit.jpg",
+            },
+            {
+              id: 2,
+              color: "bg-red-200",
+              bgColor: "bg-red-100",
+              name: "Omkar Babar",
+              image: "assets/team/omkar.jpg",
+            },
+
+            {
+              id: 4,
+              color: "bg-purple-200",
+              bgColor: "bg-purple-100",
+              name: "Anish Kumar",
+              image: "assets/team/anish.jpg",
+            },
+
+            {
+              id: 6,
+              color: "bg-yellow-200",
+              bgColor: "bg-yellow-100",
+              name: "Abhishek Gangwar",
+              image: "assets/team/abhishek.jpg",
+            },
+          ];
+
+          function createnameElement(name) {
+            const div = document.createElement("div");
+            div.className = `name-item ${name.bgColor}`;
+
+            // Extract the color from the bgColor class (e.g., 'bg-red-100' -> 'red')
+            const colorName = name.bgColor.split("-")[1];
+
+            div.innerHTML = `
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-${colorName}-50/50 to-${colorName}-900/20 mix-blend-multiply z-10"></div>
+        <img
+          src="${name.image}"
+          alt="${name.name} names"
+          class="w-full h-full object-cover"
+        />
+        
+        <div class="info absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent z-20">
+          <h2 class="text-3xl font-bold text-white mb-1">${name.name}</h2>
+          <!--<p class="text-xs text-white/80 max-w-[200px] mb-3">${name.description}</p>-->
+        </div>
+      </div>
+    `;
+            return div;
+          }
+
+          function initGallery() {
+            const gallery = document.getElementById("gallery");
+
+            names.forEach((name) => {
+              const element = createnameElement(name);
+              gallery.appendChild(element);
+            });
+          }
+
+          // Initialize the gallery when the DOM is loaded
+          document.addEventListener("DOMContentLoaded", initGallery);
+        </script>
+      </div>
+      <div>
+        <footer class="contact-us">
+          <h2>Contact Us</h2>
+          <p>Email: dhruvtara@company.com</p>
+          <p>Phone: (+91) 7840918051</p>
+          <p>Address: 2/36, Arya Samaj Gali, Bahadurgarh, Haryana</p>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

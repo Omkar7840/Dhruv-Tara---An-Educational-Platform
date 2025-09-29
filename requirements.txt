@@ -1,13 +1,3 @@
-# blinker
-# click
-# Flask
-# Flask-Cors
-# google-generativeai
-# googletrans
-# requests
-# python-dotenv
-# youtube-transcript-api
-# Werkzeug
 blinker==1.6.3
 click==8.1.7
 Flask==2.3.3
@@ -21,3 +11,15 @@ yt-dlp==2023.11.16
 groq==0.3.0
 protobuf==3.20.3
 urllib3==1.26.17
+gunicorn>=20.0.0
+itsdangerous>=2.0.0
+Jinja2>=3.0.0
+MarkupSafe>=2.0.0
+numpy>=1.18.0
+scipy>=1.5.0
+scikit-learn>=0.24.0
+matplotlib>=3.0.0
+pandas>=1.0.0
+seaborn>=0.10.0
+jsonschema>=3.2.0
+neattext>=0.1.2
